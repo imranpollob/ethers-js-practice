@@ -2,7 +2,7 @@ const { ethers } = require("ethers");
 require("dotenv").config();
 
 const provider = new ethers.providers.JsonRpcProvider(process.env.GANACHE_RPC_URL);
-
+// Wallet for account 1
 const wallet1 = new ethers.Wallet(process.env.GANACHE_ADDRESS1_PRIVATE_KEY, provider);
 
 async function main() {
@@ -18,6 +18,7 @@ async function main() {
     to: process.env.GANACHE_ADDRESS2,
     value: ethers.utils.parseEther("0.25")
   });
+  // Need to wait to create a block
   await tx.wait()
   console.log(tx);
 

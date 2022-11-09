@@ -2,9 +2,9 @@ const { ethers } = require("ethers");
 require("dotenv").config();
 
 const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_RPC_URL_MAINNET);
-
+// DAI contract abi
 const contract = new ethers.Contract(
-  "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+  "0x6B175474E89094C44Da98b954EedeAC495271d0F", // contract address
   [
     { inputs: [{ internalType: "uint256", name: "chainId_", type: "uint256" }], payable: false, stateMutability: "nonpayable", type: "constructor" },
     {
@@ -248,6 +248,7 @@ const contract = new ethers.Contract(
 );
 
 async function main() {
+  // Calling contract functions
   console.log(`Contract Name: ${await contract.name()}`);
   console.log(`Contract Symbol: ${await contract.symbol()}`);
   console.log(`Total Supply: ${await contract.totalSupply()}`);
